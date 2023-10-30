@@ -1,15 +1,15 @@
 package main
 
 import (
-	"net/http"
-	"net/url"
-	"net/http/httputil"
-	"log"
-	"net"
-	"time"
 	"context"
 	"github.com/bogdanovich/dns_resolver"
+	"log"
+	"net"
+	"net/http"
+	"net/http/httputil"
+	"net/url"
 	"strings"
+	"time"
 )
 
 type handle struct {
@@ -30,7 +30,8 @@ func (this *handle) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	http.DefaultTransport.(*http.Transport).DialContext = func(ctx context.Context, network, addr string) (net.Conn, error) {
 		remote := strings.Split(addr, ":")
 		if cmd.ip == "" {
-			resolver := dns_resolver.New([]string{"114.114.114.114", "114.114.115.115", "119.29.29.29", "223.5.5.5", "8.8.8.8", "208.67.222.222", "208.67.220.220"})
+			resolver := dns_resolver.New([]string{"114.114.114.114", "114.114.115.115", "119.29.29.29",
+				"223.5.5.5", "8.8.8.8", "208.67.222.222", "208.67.220.220"})
 			resolver.RetryTimes = 5
 			ip, err := resolver.LookupHost(remote[0])
 			if err != nil {

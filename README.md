@@ -1,18 +1,14 @@
-# ReverseProxy
-ReverseProxy in golang
-
-## Use:
-
-	./ReverseProxy_[OS]_[ARCH] -h
-	
-	Usage of ReverseProxy_[OS]_[ARCH]:
-	  -l string
-	        listen on ip:port (default "0.0.0.0:8888")
-	  -r string
-	        reverse proxy addr (default "http://idea.lanyus.com:80")
-
-
-	./ReverseProxy_windows_amd64.exe -l "0.0.0.0:8081" -r "https://www.baidu.com"
-
-	Listening on 0.0.0.0:8081, forwarding to https://www.baidu.com
-
+fork from https://github.com/ilanyu/ReverseProxy
+本地编译
+```shell
+make build
+```
+运行
+```shell
+./output/bin/proxy
+```
+docker运行
+```shell
+make docker
+docker run -p 8888:8888 -d xuning888/proxy2
+```
