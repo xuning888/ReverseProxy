@@ -7,7 +7,7 @@ build:
 	@mv proxy ./output/bin
 .PHONY: docker
 docker:
-	@go mod dity
+	@go mod tidy
 	@rm -rf output/bin || true
 	@mkdir -p output/bin || true
 	@GOOS=linux GOARCH=arm go build -o proxy .
